@@ -153,6 +153,14 @@ const ToggleContainer = styled(Flex)`
   cursor: pointer;
   user-select: none;
   margin-left: auto;
+  background: transparent;
+  border: none;
+  padding: 0;
+  &:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
   @media (min-width: 56em) {
     display: none;
   }
@@ -242,7 +250,14 @@ function Header({ unfixed, color, bgColor, dark, fixed, ...props }) {
         >
           {colorMode === 'dark' ? '☀' : '☾'}
         </Box>
-        <ToggleContainer color={toggleColor} onClick={handleToggleMenu}>
+        <ToggleContainer
+          as="button"
+          type="button"
+          aria-label={toggled ? 'Close menu' : 'Open menu'}
+          aria-expanded={toggled}
+          color={toggleColor}
+          onClick={handleToggleMenu}
+        >
           <Icon glyph={toggled ? 'view-close' : 'menu'} />
         </ToggleContainer>
       </Content>
