@@ -195,6 +195,7 @@ const Content = ({ onJoinClick, headingRef }) => (
         </Text>
         <Box sx={{ display: 'flex', gap: 3, justifyContent: 'center', flexWrap: 'wrap' }}>
           <motion.button
+            type="button"
             onClick={onJoinClick}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
