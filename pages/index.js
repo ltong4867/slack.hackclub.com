@@ -453,6 +453,7 @@ const SlackPage = () => {
             radial-gradient(circle at 50% 80%, rgba(18, 100, 163, 0.05), transparent 50%)
           `,
           zIndex: -2,
+          pointerEvents: 'none'
         },
         '&::after': {
           content: '""',
