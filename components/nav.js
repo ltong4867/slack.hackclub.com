@@ -242,7 +242,19 @@ function Header({ unfixed, color, bgColor, dark, fixed, ...props }) {
         >
           {colorMode === 'dark' ? '☀' : '☾'}
         </Box>
-        <ToggleContainer color={toggleColor} onClick={handleToggleMenu}>
+        <ToggleContainer
+          as="button"
+          type="button"
+          aria-expanded={toggled}
+          aria-label={toggled ? 'Close menu' : 'Open menu'}
+          color={toggleColor}
+          onClick={handleToggleMenu}
+          sx={{
+            bg: 'transparent',
+            border: 'none',
+            ':focus-visible': { outline: '2px solid currentColor', outlineOffset: '2px', borderRadius: '4px' }
+          }}
+        >
           <Icon glyph={toggled ? 'view-close' : 'menu'} />
         </ToggleContainer>
       </Content>
