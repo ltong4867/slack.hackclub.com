@@ -436,11 +436,37 @@ const SlackPage = () => {
   return (
     <Box
       sx={{
-        backgroundImage: 'url(/pattern.svg)',
-        backgroundRepeat: 'repeat',
-        backgroundAttachment: 'fixed',
         minHeight: '100vh',
-        backgroundColor: 'snow'
+        backgroundColor: 'snow',
+        position: 'relative',
+        zIndex: 0,
+        '&::before': {
+          content: '""',
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          background: `
+            radial-gradient(circle at 15% 50%, rgba(255, 140, 55, 0.1), transparent 50%),
+            radial-gradient(circle at 85% 30%, rgba(236, 55, 80, 0.1), transparent 50%),
+            radial-gradient(circle at 50% 80%, rgba(18, 100, 163, 0.05), transparent 50%)
+          `,
+          zIndex: -2,
+        },
+        '&::after': {
+          content: '""',
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          background: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+          opacity: 0.4,
+          mixBlendMode: 'overlay',
+          zIndex: -1,
+          pointerEvents: 'none'
+        }
       }}
     >
       <Meta
