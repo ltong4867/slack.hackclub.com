@@ -117,7 +117,8 @@ const layout = (props) =>
         }
       `
 const NavBar = styled(Box, {
-  shouldForwardProp: (prop) => !['isMobile', 'toggled','scrolled','color','dark'].includes(prop)
+  shouldForwardProp: (prop) =>
+    !['isMobile', 'toggled', 'scrolled', 'color', 'dark'].includes(prop)
 })`
   display: none;
   ${layout};
@@ -153,6 +154,9 @@ const ToggleContainer = styled(Flex)`
   cursor: pointer;
   user-select: none;
   margin-left: auto;
+  background: transparent;
+  border: none;
+  padding: 0;
   @media (min-width: 56em) {
     display: none;
   }
@@ -237,12 +241,22 @@ function Header({ unfixed, color, bgColor, dark, fixed, ...props }) {
             ml: 2,
             color: 'inherit',
             display: 'block',
-            ':focus-visible': { outline: '2px solid currentColor', outlineOffset: '2px', borderRadius: '4px' }
+            ':focus-visible': {
+              outline: '2px solid currentColor',
+              outlineOffset: '2px',
+              borderRadius: '4px'
+            }
           }}
         >
           {colorMode === 'dark' ? '☀' : '☾'}
         </Box>
-        <ToggleContainer color={toggleColor} onClick={handleToggleMenu}>
+        <ToggleContainer
+          as="button"
+          aria-label="Toggle menu"
+          aria-expanded={toggled}
+          color={toggleColor}
+          onClick={handleToggleMenu}
+        >
           <Icon glyph={toggled ? 'view-close' : 'menu'} />
         </ToggleContainer>
       </Content>
