@@ -157,10 +157,10 @@ const ToggleContainer = styled(Flex)`
   background: transparent;
   border: none;
   padding: 0;
+  border-radius: 4px;
   &:focus-visible {
     outline: 2px solid currentColor;
     outline-offset: 2px;
-    border-radius: 4px;
   }
   @media (min-width: 56em) {
     display: none;
