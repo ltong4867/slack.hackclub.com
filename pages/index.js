@@ -11,6 +11,7 @@ import Footer from '../components/footer'
 import Nav from '../components/nav'
 import Header from '../components/slack/header'
 import Slides from '../components/slides/Slides'
+import { svgNoiseDataUri } from '../lib/constants'
 
 const ChannelName = ({ children, href }) => (
   <Text
@@ -453,7 +454,6 @@ const SlackPage = () => {
             radial-gradient(circle at 50% 80%, rgba(18, 100, 163, 0.05), transparent 50%)
           `,
           zIndex: -2,
-          pointerEvents: 'none'
         },
         '&::after': {
           content: '""',
@@ -462,7 +462,7 @@ const SlackPage = () => {
           left: 0,
           right: 0,
           bottom: 0,
-          background: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='1' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+          background: svgNoiseDataUri,
           opacity: 0.4,
           mixBlendMode: 'overlay',
           zIndex: -1,

@@ -5,8 +5,9 @@ import { motion } from 'framer-motion'
 import { getLiveCount, formatted as defaultFormatted } from '../../lib/members'
 import usePrefersMotion from '../../lib/use-prefers-motion'
 import useHasMounted from '../../lib/use-has-mounted'
+import { svgNoiseDataUri } from '../../lib/constants'
 
-const HeroGraphic = () => (
+const HeroGraphic = ({ prefersMotion }) => (
   <Box
     sx={{
       position: 'absolute',
@@ -19,76 +20,121 @@ const HeroGraphic = () => (
       pointerEvents: 'none'
     }}
   >
-    <motion.div
-      animate={{
-        y: [0, -30, 0],
-        x: [0, 20, 0],
-        scale: [1, 1.1, 1],
-        rotate: [0, 10, 0]
-      }}
-      transition={{
-        duration: 12,
-        repeat: Infinity,
-        ease: 'easeInOut'
-      }}
-      style={{
-        position: 'absolute',
-        top: '15%',
-        left: '10%',
-        width: '200px',
-        height: '200px',
-        borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 70%)',
-        filter: 'blur(10px)'
-      }}
-    />
-    <motion.div
-      animate={{
-        y: [0, 40, 0],
-        x: [0, -30, 0],
-        scale: [1, 1.2, 1],
-        rotate: [0, -15, 0]
-      }}
-      transition={{
-        duration: 15,
-        repeat: Infinity,
-        ease: 'easeInOut',
-        delay: 2
-      }}
-      style={{
-        position: 'absolute',
-        bottom: '10%',
-        right: '15%',
-        width: '250px',
-        height: '250px',
-        borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0) 70%)',
-        filter: 'blur(15px)'
-      }}
-    />
-    <motion.div
-      animate={{
-        y: [0, -20, 0],
-        scale: [1, 1.15, 1]
-      }}
-      transition={{
-        duration: 10,
-        repeat: Infinity,
-        ease: 'easeInOut',
-        delay: 5
-      }}
-      style={{
-        position: 'absolute',
-        top: '40%',
-        left: '50%',
-        marginLeft: '-100px',
-        width: '200px',
-        height: '200px',
-        borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 70%)',
-        filter: 'blur(20px)'
-      }}
-    />
+    {prefersMotion && (
+      <>
+        <motion.div
+          animate={{
+            y: [0, -30, 0],
+            x: [0, 20, 0],
+            scale: [1, 1.1, 1],
+            rotate: [0, 10, 0]
+          }}
+          transition={{
+            duration: 12,
+            repeat: Infinity,
+            ease: 'easeInOut'
+          }}
+          style={{
+            position: 'absolute',
+            top: '15%',
+            left: '10%',
+            width: '200px',
+            height: '200px',
+            borderRadius: '50%',
+            background: 'radial-gradient(circle, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 70%)',
+            filter: 'blur(10px)'
+          }}
+        />
+        <motion.div
+          animate={{
+            y: [0, 40, 0],
+            x: [0, -30, 0],
+            scale: [1, 1.2, 1],
+            rotate: [0, -15, 0]
+          }}
+          transition={{
+            duration: 15,
+            repeat: Infinity,
+            ease: 'easeInOut',
+            delay: 2
+          }}
+          style={{
+            position: 'absolute',
+            bottom: '10%',
+            right: '15%',
+            width: '250px',
+            height: '250px',
+            borderRadius: '50%',
+            background: 'radial-gradient(circle, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0) 70%)',
+            filter: 'blur(15px)'
+          }}
+        />
+        <motion.div
+          animate={{
+            y: [0, -20, 0],
+            scale: [1, 1.15, 1]
+          }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            ease: 'easeInOut',
+            delay: 5
+          }}
+          style={{
+            position: 'absolute',
+            top: '40%',
+            left: '50%',
+            marginLeft: '-100px',
+            width: '200px',
+            height: '200px',
+            borderRadius: '50%',
+            background: 'radial-gradient(circle, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 70%)',
+            filter: 'blur(20px)'
+          }}
+        />
+      </>
+    )}
+    {!prefersMotion && (
+      <>
+        <Box
+          style={{
+            position: 'absolute',
+            top: '15%',
+            left: '10%',
+            width: '200px',
+            height: '200px',
+            borderRadius: '50%',
+            background: 'radial-gradient(circle, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 70%)',
+            filter: 'blur(10px)'
+          }}
+        />
+        <Box
+          style={{
+            position: 'absolute',
+            bottom: '10%',
+            right: '15%',
+            width: '250px',
+            height: '250px',
+            borderRadius: '50%',
+            background: 'radial-gradient(circle, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0) 70%)',
+            filter: 'blur(15px)'
+          }}
+        />
+        <Box
+          style={{
+            position: 'absolute',
+            top: '40%',
+            left: '50%',
+            marginLeft: '-100px',
+            width: '200px',
+            height: '200px',
+            borderRadius: '50%',
+            background: 'radial-gradient(circle, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 70%)',
+            filter: 'blur(20px)'
+          }}
+        />
+      </>
+    )}
     <Box
       sx={{
         position: 'absolute',
@@ -96,7 +142,7 @@ const HeroGraphic = () => (
         left: 0,
         right: 0,
         bottom: 0,
-        background: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+        background: svgNoiseDataUri,
         opacity: 0.2,
         mixBlendMode: 'overlay'
       }}
@@ -148,7 +194,7 @@ const MemberBadge = () => {
   )
 }
 
-const Content = ({ onJoinClick, headingRef }) => (
+const Content = ({ onJoinClick, headingRef, prefersMotion }) => (
   <Grid
     gap={3}
     pt={[5, '100px']}
@@ -159,7 +205,7 @@ const Content = ({ onJoinClick, headingRef }) => (
       position: 'relative'
     }}
   >
-    <HeroGraphic />
+    <HeroGraphic prefersMotion={prefersMotion} />
     <Box
       ref={headingRef}
       sx={{
@@ -194,11 +240,11 @@ const Content = ({ onJoinClick, headingRef }) => (
           Join up to make friends, find projects, and have fun.
         </Text>
         <Box sx={{ display: 'flex', gap: 3, justifyContent: 'center', flexWrap: 'wrap' }}>
-          <motion.button
-            type="button"
+          <Box
+            as={motion.button}
             onClick={onJoinClick}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+            whileHover={prefersMotion ? { scale: 1.05 } : {}}
+            whileTap={prefersMotion ? { scale: 0.95 } : {}}
             transition={{ type: 'spring', stiffness: 400, damping: 10 }}
             sx={{
               bg: 'red',
@@ -225,7 +271,7 @@ const Content = ({ onJoinClick, headingRef }) => (
             }}
           >
             Join Hack Club
-          </motion.button>
+          </Box>
         </Box>
       </Card>
     </Box>
@@ -255,7 +301,8 @@ Cover.displayName = 'Cover'
 
 const Static = ({
   img = 'https://cloud-r4rrjh2z8-hack-club-bot.vercel.app/02020-07-25_a1tcva4ch6mmr6j2cfmcb4e9ync3yhar.png',
-  onJoinClick
+  onJoinClick,
+  prefersMotion
 }) => (
   <Box
     as="section"
@@ -268,7 +315,7 @@ const Static = ({
     }}
   >
     <Cover />
-    <Content onJoinClick={onJoinClick} />
+    <Content onJoinClick={onJoinClick} prefersMotion={prefersMotion} />
   </Box>
 )
 
@@ -277,7 +324,6 @@ const Slack = ({ onJoinClick }) => {
   const prefersMotion = usePrefersMotion()
   const coverRef = useRef(null)
   const headingRef = useRef(null)
-  const btnRef = useRef(null)
   const scrollRafRef = useRef(null)
   const scrollYRef = useRef(0)
   useEffect(() => {
@@ -310,11 +356,12 @@ const Slack = ({ onJoinClick }) => {
         <Content
           onJoinClick={onJoinClick}
           headingRef={headingRef}
+          prefersMotion={prefersMotion}
         />
       </Box>
     )
   } else {
-    return <Static onJoinClick={onJoinClick} />
+    return <Static onJoinClick={onJoinClick} prefersMotion={prefersMotion} />
   }
 }
 
