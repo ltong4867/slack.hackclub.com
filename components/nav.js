@@ -252,6 +252,7 @@ function Header({ unfixed, color, bgColor, dark, fixed, ...props }) {
         </Box>
         <ToggleContainer
           as="button"
+          type="button"
           aria-label="Toggle menu"
           aria-expanded={toggled}
           color={toggleColor}
