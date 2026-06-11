@@ -1,3 +1,4 @@
-## 2024-05-15 - Accessible Navigation Toggle Container
-**Learning:** Found that custom navigation toggles built with Flex/Divs in Theme UI/Emotion need explicit `as="button"`, `type="button"`, explicit CSS resets for background/border, ARIA labels that dynamically reflect the toggled state, and a `&:focus-visible` outline.
-**Action:** Always check custom stylized clickable containers for proper accessible button semantics and focus ring.
+## 2026-06-10 - [Accessible Mobile Menu Toggles]
+
+**Learning:** Found a custom mobile menu toggle that was implemented as an interactive div without button semantics, aria-labels, or proper controls linking. It relied purely on click events. Assistive tech needs explicit relationships.
+**Action:** Refactored to use semantic `as="button"`, added dynamic `aria-label` based on toggle state, `aria-expanded`, explicit CSS resets, visible focus rings for keyboard navigation, and `aria-controls` to link the toggle with the navigation menu.

@@ -1,0 +1,61 @@
+
+> slack-hackclub-com@1.0.0 dev
+> next
+
+▲ Next.js 16.2.9 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.0.2:3000
+✓ Ready in 1108ms
+
+○ Compiling / ...
+ GET / 200 in 4.8s (next.js: 4.3s, application-code: 457ms)
+[browser] A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <section id="slack" className="css-1vtm6af">
+      <Cover>
+      <Content onJoinClick={function handleJoinClick} prefersMotion={true}>
+        <EmotionCssPropInternal gap={3} pt={[...]} pb={[...]} css={function} __EMOTION_TYPE_PLEASE_DO_NOT_USE__={{...}}>
+          <Insertion>
+          <Grid gap={3} pt={[...]} pb={[...]} className="css-oki41p">
+            <Box ref={null} pt={[...]} pb={[...]} className="css-oki41p" __themeKey="grids" __css={{display:"grid", ...}}>
+              <EmotionCssPropInternal ref={null} css={function} className="css-oki41p" ...>
+                <Insertion>
+                <div className="css-up8qsf">
+                  <HeroGraphic prefersMotion={true}>
+                    <EmotionCssPropInternal css={function} __EMOTION_TYPE_PLEASE_DO_NOT_USE__={{...}}>
+                      <Insertion>
+                      <Box className="css-kfuc7y">
+                        <EmotionCssPropInternal ref={null} css={function} className="css-kfuc7y" ...>
+                          <Insertion>
+                          <div className="css-iljsg1">
+                            <motion.div animate={{y:[...],x:[...], ...}} transition={{duration:12, ...}} ...>
+                              <div
+                                style={{position:"absolute",top:"15%",left:"10%",width:"200px",height:"200px",borderRadius:"50%",background:"ra...", ...}}
+                                ref={function useMotionRef.useCallback}
+-                               className="css-1yz7e9k"
+                              >
+                            <motion.div animate={{y:[...],x:[...], ...}} transition={{duration:15, ...}} ...>
+                              <div
+                                style={{position:"absolute",bottom:"10%",right:"15%",width:"250px",height:"250px",borderRadius:"50%", ...}}
+                                ref={function useMotionRef.useCallback}
+-                               className="css-1yz7e9k"
+                              >
+                            <motion.div animate={{y:[...], ...}} transition={{duration:10, ...}} ...>
+                              <div
+                                style={{position:"absolute",top:"40%",left:"50%",marginLeft:"-100px",width:"200px",height:"200px", ...}}
+                                ref={function useMotionRef.useCallback}
+-                               className="css-1yz7e9k"
+                              >
+                            ...
+                  ...

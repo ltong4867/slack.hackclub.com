@@ -117,7 +117,8 @@ const layout = (props) =>
         }
       `
 const NavBar = styled(Box, {
-  shouldForwardProp: (prop) => !['isMobile', 'toggled','scrolled','color','dark'].includes(prop)
+  shouldForwardProp: (prop) =>
+    !['isMobile', 'toggled', 'scrolled', 'color', 'dark'].includes(prop)
 })`
   display: none;
   ${layout};
@@ -153,7 +154,6 @@ const ToggleContainer = styled(Flex)`
   cursor: pointer;
   user-select: none;
   margin-left: auto;
-  display: flex;
   background: transparent;
   border: none;
   padding: 0;
@@ -246,7 +246,11 @@ function Header({ unfixed, color, bgColor, dark, fixed, ...props }) {
             ml: 2,
             color: 'inherit',
             display: 'block',
-            ':focus-visible': { outline: '2px solid currentColor', outlineOffset: '2px', borderRadius: '4px' }
+            ':focus-visible': {
+              outline: '2px solid currentColor',
+              outlineOffset: '2px',
+              borderRadius: '4px'
+            }
           }}
         >
           {colorMode === 'dark' ? '☀' : '☾'}
@@ -256,6 +260,7 @@ function Header({ unfixed, color, bgColor, dark, fixed, ...props }) {
           type="button"
           aria-label={toggled ? 'Close menu' : 'Open menu'}
           aria-expanded={toggled}
+          aria-controls="mobile-nav-menu"
           color={toggleColor}
           onClick={handleToggleMenu}
         >
@@ -264,7 +269,7 @@ function Header({ unfixed, color, bgColor, dark, fixed, ...props }) {
       </Content>
       <Navigation
         as="nav"
-        aria-hidden={!mobile}
+        id="mobile-nav-menu" aria-hidden={!mobile}
         isMobile
         toggled={toggled}
         color={baseColor}
