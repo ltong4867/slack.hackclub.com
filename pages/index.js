@@ -45,7 +45,7 @@ const ChannelName = ({ children, href }) => (
 
 const GuideItem = ({ title, children, isOpen, onToggle }) => {
   const contentRef = useRef(null)
-  const contentId = `guide-content-${typeof title === 'string' ? title.toLowerCase().replace(/[^a-z0-9]+/g, '-') : ''}`
+  const contentId = `guide-content-${title.replace(/\s+/g, '-').toLowerCase()}`
 
   const handleClick = () => {
     onToggle()
@@ -64,6 +64,7 @@ const GuideItem = ({ title, children, isOpen, onToggle }) => {
     >
       <Box
         as="button"
+        type="button"
         onClick={handleClick}
         aria-expanded={isOpen}
         aria-controls={contentId}
@@ -116,7 +117,8 @@ const GuideItem = ({ title, children, isOpen, onToggle }) => {
         sx={{
           display: 'grid',
           gridTemplateRows: isOpen ? '1fr' : '0fr',
-          transition: 'grid-template-rows 0.3s ease',
+          visibility: isOpen ? 'visible' : 'hidden',
+          transition: 'grid-template-rows 0.3s ease, visibility 0.3s ease',
           '& > div': { overflow: 'hidden' }
         }}
       >
