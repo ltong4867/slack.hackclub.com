@@ -153,6 +153,7 @@ const ToggleContainer = styled(Flex)`
   cursor: pointer;
   user-select: none;
   margin-left: auto;
+  display: flex;
   background: transparent;
   border: none;
   padding: 0;
