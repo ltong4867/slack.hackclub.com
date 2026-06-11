@@ -546,9 +546,11 @@ const Slides = ({ isOpen, onClose }) => {
 
       <Box
         as="button"
+        type="button"
         aria-label="Go back"
         onClick={handleBack}
         sx={{
+          position: 'absolute',
           position: 'absolute',
           top: 4,
           left: 4,
