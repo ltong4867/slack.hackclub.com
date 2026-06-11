@@ -551,7 +551,6 @@ const Slides = ({ isOpen, onClose }) => {
         onClick={handleBack}
         sx={{
           position: 'absolute',
-          position: 'absolute',
           top: 4,
           left: 4,
           zIndex: 10,
