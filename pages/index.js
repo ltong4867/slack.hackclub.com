@@ -45,7 +45,7 @@ const ChannelName = ({ children, href }) => (
 
 const GuideItem = ({ title, children, isOpen, onToggle }) => {
   const contentRef = useRef(null)
-  const contentId = `guide-content-${title.replace(/\s+/g, '-').toLowerCase()}`
+  const contentId = `guide-content-${typeof title === 'string' ? title.toLowerCase().replace(/[^a-z0-9]+/g, '-') : ''}`
 
   const handleClick = () => {
     onToggle()
