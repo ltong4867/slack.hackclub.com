@@ -11,6 +11,7 @@ import Footer from '../components/footer'
 import Nav from '../components/nav'
 import Header from '../components/slack/header'
 import Slides from '../components/slides/Slides'
+import { svgNoiseDataUri } from '../lib/constants'
 
 const ChannelName = ({ children, href }) => (
   <Text
@@ -436,11 +437,37 @@ const SlackPage = () => {
   return (
     <Box
       sx={{
-        backgroundImage: 'url(/pattern.svg)',
-        backgroundRepeat: 'repeat',
-        backgroundAttachment: 'fixed',
         minHeight: '100vh',
-        backgroundColor: 'snow'
+        backgroundColor: 'snow',
+        position: 'relative',
+        zIndex: 0,
+        '&::before': {
+          content: '""',
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          background: `
+            radial-gradient(circle at 15% 50%, rgba(255, 140, 55, 0.1), transparent 50%),
+            radial-gradient(circle at 85% 30%, rgba(236, 55, 80, 0.1), transparent 50%),
+            radial-gradient(circle at 50% 80%, rgba(18, 100, 163, 0.05), transparent 50%)
+          `,
+          zIndex: -2,
+        },
+        '&::after': {
+          content: '""',
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          background: svgNoiseDataUri,
+          opacity: 0.4,
+          mixBlendMode: 'overlay',
+          zIndex: -1,
+          pointerEvents: 'none'
+        }
       }}
     >
       <Meta
