@@ -252,7 +252,17 @@ function Header({ unfixed, color, bgColor, dark, fixed, ...props }) {
           sx={{
             bg: 'transparent',
             border: 'none',
-            ':focus-visible': { outline: '2px solid currentColor', outlineOffset: '2px', borderRadius: '4px' }
+            p: 0,
+            m: 0,
+            font: 'inherit',
+            color: 'inherit',
+            appearance: 'none',
+            WebkitAppearance: 'none',
+            ':focus-visible': {
+              outline: '2px solid currentColor',
+              outlineOffset: '2px',
+              borderRadius: '4px'
+            }
           }}
         >
           <Icon glyph={toggled ? 'view-close' : 'menu'} />
