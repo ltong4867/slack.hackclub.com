@@ -65,6 +65,7 @@ const GuideItem = ({ title, children, isOpen, onToggle }) => {
       <Box
         as="button"
         onClick={handleClick}
+        aria-expanded={isOpen}
         sx={{
           width: '100%',
           py: '1.25rem',
@@ -81,12 +82,18 @@ const GuideItem = ({ title, children, isOpen, onToggle }) => {
           fontFamily: 'inherit',
           textAlign: 'left',
           borderRadius: '8px',
-          transition: 'all 0.2s ease',
+          transition: 'all 0.2s ease, box-shadow 0.2s',
           '&:hover': {
             color: 'primary',
             bg: 'rgba(236, 55, 80, 0.05)'
           },
-          '&:hover .guide-icon': { color: 'primary' }
+          '&:hover .guide-icon': { color: 'primary' },
+          '&:focus-visible': {
+            outline: '2px solid',
+            outlineColor: 'primary',
+            outlineOffset: '2px',
+            boxShadow: '0 0 0 4px rgba(236, 55, 80, 0.2)'
+          }
         }}
       >
         {title}
@@ -453,7 +460,7 @@ const SlackPage = () => {
             radial-gradient(circle at 85% 30%, rgba(236, 55, 80, 0.1), transparent 50%),
             radial-gradient(circle at 50% 80%, rgba(18, 100, 163, 0.05), transparent 50%)
           `,
-          zIndex: -2,
+          zIndex: -2
         },
         '&::after': {
           content: '""',
@@ -783,7 +790,8 @@ const SlackPage = () => {
                   display: 'inline-block',
                   position: 'relative',
                   overflow: 'hidden',
-                  transition: 'transform 0.125s ease-in-out',
+                  transition:
+                    'transform 0.125s ease-in-out, box-shadow 0.125s ease-in-out',
                   border: '2px solid white',
                   cursor: geoLoading ? 'default' : 'pointer',
                   fontFamily: 'inherit',
@@ -793,6 +801,11 @@ const SlackPage = () => {
                     boxShadow: '0 0 0 2px white',
                     backgroundImage:
                       'radial-gradient(ellipse farthest-corner at bottom right, #ff8c37, #ec3750)'
+                  },
+                  ':focus-visible': {
+                    outline: '2px solid white',
+                    outlineOffset: '2px',
+                    boxShadow: '0 0 0 4px rgba(255,140,55,0.5)'
                   }
                 }}
               >
