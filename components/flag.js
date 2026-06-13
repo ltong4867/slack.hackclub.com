@@ -59,7 +59,12 @@ const Base = styled('a', {
 `
 
 const Flag = ({ scrolled, ...props }) => (
-  <Base href="https://hackclub.com" title="Hack Club Homepage" $scrolled={scrolled} {...props} />
+  <Base
+    href="https://hackclub.com"
+    title="Hack Club Homepage"
+    $scrolled={scrolled}
+    {...props}
+  />
 )
 
 export default Flag
