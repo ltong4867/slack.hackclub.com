@@ -1,4 +1,3 @@
-## 2026-06-10 - [Accessible Mobile Menu Toggles]
-
-**Learning:** Found a custom mobile menu toggle that was implemented as an interactive div without button semantics or aria-labels. It relied purely on click events.
-**Action:** Refactored to use semantic `as="button"`, added dynamic `aria-label` based on toggle state, `aria-expanded`, and visible focus rings for keyboard navigation.
+## 2024-05-18 - Accessibility on Accordion Implementations with `theme-ui`
+**Learning:** `theme-ui` primitives don't provide native accessibility attributes. When creating complex components like accordions with `<Box as="button">`, accessibility attributes such as `aria-expanded`, `aria-controls`, `aria-labelledby`, and `aria-hidden` are not automatically provided. Furthermore, explicit focus states (like `&:focus-visible`) need to be managed manually to ensure keyboard accessibility.
+**Action:** When building interactive components using `theme-ui` and standard HTML `as` props, explicitly add the required ARIA attributes. Also explicitly style the `&:focus-visible` pseudo-class for these interactive components to ensure keyboard users have visual feedback.
