@@ -46,6 +46,7 @@ const ChannelName = ({ children, href }) => (
 
 const GuideItem = ({ title, children, isOpen, onToggle }) => {
   const contentRef = useRef(null)
+  const idBase = title.toLowerCase().replace(/\s+/g, '-')
 
   const handleClick = () => {
     onToggle()
@@ -65,6 +66,9 @@ const GuideItem = ({ title, children, isOpen, onToggle }) => {
       <Box
         as="button"
         onClick={handleClick}
+        id={`accordion-header-${idBase}`}
+        aria-expanded={isOpen}
+        aria-controls={`accordion-panel-${idBase}`}
         sx={{
           width: '100%',
           py: '1.25rem',
@@ -86,7 +90,12 @@ const GuideItem = ({ title, children, isOpen, onToggle }) => {
             color: 'primary',
             bg: 'rgba(236, 55, 80, 0.05)'
           },
-          '&:hover .guide-icon': { color: 'primary' }
+          '&:hover .guide-icon': { color: 'primary' },
+          '&:focus-visible': {
+            outline: '2px solid',
+            outlineColor: 'primary',
+            outlineOffset: '2px'
+          }
         }}
       >
         {title}
@@ -105,6 +114,9 @@ const GuideItem = ({ title, children, isOpen, onToggle }) => {
       </Box>
       <Box
         ref={contentRef}
+        id={`accordion-panel-${idBase}`}
+        role="region"
+        aria-labelledby={`accordion-header-${idBase}`}
         onTransitionEnd={handleTransitionEnd}
         sx={{
           display: 'grid',
@@ -453,7 +465,7 @@ const SlackPage = () => {
             radial-gradient(circle at 85% 30%, rgba(236, 55, 80, 0.1), transparent 50%),
             radial-gradient(circle at 50% 80%, rgba(18, 100, 163, 0.05), transparent 50%)
           `,
-          zIndex: -2,
+          zIndex: -2
         },
         '&::after': {
           content: '""',
@@ -769,6 +781,7 @@ const SlackPage = () => {
                 as="button"
                 onClick={handleGeolocate}
                 disabled={geoLoading}
+                aria-busy={geoLoading}
                 sx={{
                   bg: 'red',
                   backgroundImage:
@@ -793,6 +806,11 @@ const SlackPage = () => {
                     boxShadow: '0 0 0 2px white',
                     backgroundImage:
                       'radial-gradient(ellipse farthest-corner at bottom right, #ff8c37, #ec3750)'
+                  },
+                  ':focus-visible': {
+                    outline: '2px solid',
+                    outlineColor: 'primary',
+                    outlineOffset: '4px'
                   }
                 }}
               >
