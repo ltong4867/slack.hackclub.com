@@ -41,7 +41,8 @@ const HeroGraphic = ({ prefersMotion }) => (
             width: '200px',
             height: '200px',
             borderRadius: '50%',
-            background: 'radial-gradient(circle, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 70%)',
+            background:
+              'radial-gradient(circle, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 70%)',
             filter: 'blur(10px)'
           }}
         />
@@ -65,7 +66,8 @@ const HeroGraphic = ({ prefersMotion }) => (
             width: '250px',
             height: '250px',
             borderRadius: '50%',
-            background: 'radial-gradient(circle, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0) 70%)',
+            background:
+              'radial-gradient(circle, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0) 70%)',
             filter: 'blur(15px)'
           }}
         />
@@ -88,7 +90,8 @@ const HeroGraphic = ({ prefersMotion }) => (
             width: '200px',
             height: '200px',
             borderRadius: '50%',
-            background: 'radial-gradient(circle, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 70%)',
+            background:
+              'radial-gradient(circle, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 70%)',
             filter: 'blur(20px)'
           }}
         />
@@ -104,7 +107,8 @@ const HeroGraphic = ({ prefersMotion }) => (
             width: '200px',
             height: '200px',
             borderRadius: '50%',
-            background: 'radial-gradient(circle, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 70%)',
+            background:
+              'radial-gradient(circle, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 70%)',
             filter: 'blur(10px)'
           }}
         />
@@ -116,7 +120,8 @@ const HeroGraphic = ({ prefersMotion }) => (
             width: '250px',
             height: '250px',
             borderRadius: '50%',
-            background: 'radial-gradient(circle, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0) 70%)',
+            background:
+              'radial-gradient(circle, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0) 70%)',
             filter: 'blur(15px)'
           }}
         />
@@ -129,7 +134,8 @@ const HeroGraphic = ({ prefersMotion }) => (
             width: '200px',
             height: '200px',
             borderRadius: '50%',
-            background: 'radial-gradient(circle, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 70%)',
+            background:
+              'radial-gradient(circle, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 70%)',
             filter: 'blur(20px)'
           }}
         />
@@ -157,7 +163,7 @@ const MemberBadge = () => {
     const controller = new AbortController()
     const timeout = setTimeout(() => controller.abort(), 3000)
     getLiveCount(controller.signal)
-      .then(data => setCount(data.formatted))
+      .then((data) => setCount(data.formatted))
       .catch(() => {})
       .finally(() => clearTimeout(timeout))
     return () => {
@@ -167,27 +173,42 @@ const MemberBadge = () => {
   }, [])
 
   return (
-    <Box sx={{
-      display: 'inline-flex',
-      alignItems: 'center',
-      gap: 2,
-      bg: 'rgba(255,255,255,0.15)',
-      border: '1px solid rgba(255,255,255,0.3)',
-      borderRadius: '999px',
-      px: 3, py: 1, mb: 3,
-      backdropFilter: 'blur(8px)'
-    }}>
-      <Box sx={{
-        width: '8px', height: '8px',
-        borderRadius: '50%', bg: '#2eb67d',
-        boxShadow: '0 0 6px #2eb67d',
-        animation: 'pulse 2s ease-in-out infinite',
-        '@keyframes pulse': {
-          '0%, 100%': { opacity: 1 },
-          '50%': { opacity: 0.4 }
-        }
-      }} />
-      <Text sx={{ color: 'white', fontSize: 1, fontWeight: 600, letterSpacing: '0.03em' }}>
+    <Box
+      sx={{
+        display: 'inline-flex',
+        alignItems: 'center',
+        gap: 2,
+        bg: 'rgba(255,255,255,0.15)',
+        border: '1px solid rgba(255,255,255,0.3)',
+        borderRadius: '999px',
+        px: 3,
+        py: 1,
+        mb: 3,
+        backdropFilter: 'blur(8px)'
+      }}
+    >
+      <Box
+        sx={{
+          width: '8px',
+          height: '8px',
+          borderRadius: '50%',
+          bg: '#2eb67d',
+          boxShadow: '0 0 6px #2eb67d',
+          animation: 'pulse 2s ease-in-out infinite',
+          '@keyframes pulse': {
+            '0%, 100%': { opacity: 1 },
+            '50%': { opacity: 0.4 }
+          }
+        }}
+      />
+      <Text
+        sx={{
+          color: 'white',
+          fontSize: 1,
+          fontWeight: 600,
+          letterSpacing: '0.03em'
+        }}
+      >
         {count} hackers online
       </Text>
     </Box>
@@ -220,12 +241,24 @@ const Content = ({ onJoinClick, headingRef, prefersMotion }) => (
       <Heading
         as="h1"
         variant="title"
-        sx={{ color: 'white', fontSize: [5, 6, 7], lineHeight: 'limit', mb: [2, 3] }}
+        sx={{
+          color: 'white',
+          fontSize: [5, 6, 7],
+          lineHeight: 'limit',
+          mb: [2, 3]
+        }}
       >
         Hack Club Slack
       </Heading>
     </Box>
-    <Box sx={{ zIndex: 5, display: 'flex', alignItems: 'center', position: 'relative' }}>
+    <Box
+      sx={{
+        zIndex: 5,
+        display: 'flex',
+        alignItems: 'center',
+        position: 'relative'
+      }}
+    >
       <Card
         sx={{
           variant: 'cards.translucent',
@@ -239,7 +272,14 @@ const Content = ({ onJoinClick, headingRef, prefersMotion }) => (
           <br />
           Join up to make friends, find projects, and have fun.
         </Text>
-        <Box sx={{ display: 'flex', gap: 3, justifyContent: 'center', flexWrap: 'wrap' }}>
+        <Box
+          sx={{
+            display: 'flex',
+            gap: 3,
+            justifyContent: 'center',
+            flexWrap: 'wrap'
+          }}
+        >
           <Box
             as={motion.button}
             onClick={onJoinClick}
@@ -252,7 +292,8 @@ const Content = ({ onJoinClick, headingRef, prefersMotion }) => (
                 'radial-gradient(ellipse farthest-corner at top left, #ff8c37, #ec3750)',
               color: 'white',
               fontSize: [2, 3],
-              px: 5, py: 3,
+              px: 5,
+              py: 3,
               borderRadius: 'extra',
               fontWeight: 'bold',
               textDecoration: 'none',

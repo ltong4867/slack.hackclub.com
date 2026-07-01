@@ -30,8 +30,13 @@ const slideData = [
   {
     id: 'slack',
     title: 'We use Slack',
-    description:
-      <p>Slack is our online platform. If you don&#39;t know how to use it, we have written guides and <strong>living humans</strong> who will help you.</p>,
+    description: (
+      <p>
+        Slack is our online platform. If you don&#39;t know how to use it, we
+        have written guides and <strong>living humans</strong> who will help
+        you.
+      </p>
+    ),
     primaryButton: { label: 'Join Hack Club', action: 'auth' },
     secondaryButton: { label: 'Help with Slack', action: 'down' },
     downSlide: {
