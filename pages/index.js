@@ -53,6 +53,10 @@ const GuideItem = ({ title, children, isOpen, onToggle }) => {
 
   const handleTransitionEnd = useCallback(() => {}, [])
 
+  const baseId = title.toLowerCase().replace(/[^a-z0-9]+/g, '-')
+  const buttonId = `guide-btn-${baseId}`
+  const contentId = `guide-content-${baseId}`
+
   return (
     <Box
       sx={{
@@ -64,6 +68,9 @@ const GuideItem = ({ title, children, isOpen, onToggle }) => {
     >
       <Box
         as="button"
+        id={buttonId}
+        aria-expanded={isOpen}
+        aria-controls={contentId}
         onClick={handleClick}
         sx={{
           width: '100%',
@@ -86,12 +93,18 @@ const GuideItem = ({ title, children, isOpen, onToggle }) => {
             color: 'primary',
             bg: 'rgba(236, 55, 80, 0.05)'
           },
-          '&:hover .guide-icon': { color: 'primary' }
+          '&:hover .guide-icon': { color: 'primary' },
+          '&:focus-visible': {
+            outline: '2px solid currentColor',
+            outlineOffset: '2px',
+            borderRadius: '8px'
+          }
         }}
       >
         {title}
         <Text
           className="guide-icon"
+          aria-hidden="true"
           sx={{
             fontSize: '1.5rem',
             fontWeight: 400,
@@ -104,6 +117,9 @@ const GuideItem = ({ title, children, isOpen, onToggle }) => {
         </Text>
       </Box>
       <Box
+        id={contentId}
+        role="region"
+        aria-labelledby={buttonId}
         ref={contentRef}
         onTransitionEnd={handleTransitionEnd}
         sx={{
@@ -453,7 +469,7 @@ const SlackPage = () => {
             radial-gradient(circle at 85% 30%, rgba(236, 55, 80, 0.1), transparent 50%),
             radial-gradient(circle at 50% 80%, rgba(18, 100, 163, 0.05), transparent 50%)
           `,
-          zIndex: -2,
+          zIndex: -2
         },
         '&::after': {
           content: '""',
