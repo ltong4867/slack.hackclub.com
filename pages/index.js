@@ -2,7 +2,7 @@
 import Meta from '@hackclub/meta'
 import Head from 'next/head'
 import { Box, Heading, Text, Link as ThemeLink } from 'theme-ui'
-import { useState, useRef, useCallback } from 'react'
+import { useState, useRef, useCallback, useId } from 'react'
 import usePrefersMotion from '../lib/use-prefers-motion'
 import channels from '../channels.json'
 
@@ -46,6 +46,7 @@ const ChannelName = ({ children, href }) => (
 
 const GuideItem = ({ title, children, isOpen, onToggle }) => {
   const contentRef = useRef(null)
+  const contentId = useId()
 
   const handleClick = () => {
     onToggle()
@@ -65,6 +66,8 @@ const GuideItem = ({ title, children, isOpen, onToggle }) => {
       <Box
         as="button"
         onClick={handleClick}
+        aria-expanded={isOpen}
+        aria-controls={contentId}
         sx={{
           width: '100%',
           py: '1.25rem',
@@ -82,11 +85,15 @@ const GuideItem = ({ title, children, isOpen, onToggle }) => {
           textAlign: 'left',
           borderRadius: '8px',
           transition: 'all 0.2s ease',
+          outline: 'none',
           '&:hover': {
             color: 'primary',
             bg: 'rgba(236, 55, 80, 0.05)'
           },
-          '&:hover .guide-icon': { color: 'primary' }
+          '&:hover .guide-icon': { color: 'primary' },
+          '&:focus-visible': {
+            boxShadow: '0 0 0 3px rgba(236, 55, 80, 0.5)'
+          }
         }}
       >
         {title}
@@ -104,6 +111,7 @@ const GuideItem = ({ title, children, isOpen, onToggle }) => {
         </Text>
       </Box>
       <Box
+        id={contentId}
         ref={contentRef}
         onTransitionEnd={handleTransitionEnd}
         sx={{
@@ -453,7 +461,7 @@ const SlackPage = () => {
             radial-gradient(circle at 85% 30%, rgba(236, 55, 80, 0.1), transparent 50%),
             radial-gradient(circle at 50% 80%, rgba(18, 100, 163, 0.05), transparent 50%)
           `,
-          zIndex: -2,
+          zIndex: -2
         },
         '&::after': {
           content: '""',
