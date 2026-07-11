@@ -46,6 +46,7 @@ const ChannelName = ({ children, href }) => (
 
 const GuideItem = ({ title, children, isOpen, onToggle }) => {
   const contentRef = useRef(null)
+  const contentId = `guide-content-${title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`
 
   const handleClick = () => {
     onToggle()
@@ -65,6 +66,8 @@ const GuideItem = ({ title, children, isOpen, onToggle }) => {
       <Box
         as="button"
         onClick={handleClick}
+        aria-expanded={isOpen}
+        aria-controls={contentId}
         sx={{
           width: '100%',
           py: '1.25rem',
@@ -86,6 +89,11 @@ const GuideItem = ({ title, children, isOpen, onToggle }) => {
             color: 'primary',
             bg: 'rgba(236, 55, 80, 0.05)'
           },
+          '&:focus-visible': {
+            outline: '2px solid',
+            outlineColor: 'primary',
+            outlineOffset: '2px'
+          },
           '&:hover .guide-icon': { color: 'primary' }
         }}
       >
@@ -104,6 +112,7 @@ const GuideItem = ({ title, children, isOpen, onToggle }) => {
         </Text>
       </Box>
       <Box
+        id={contentId}
         ref={contentRef}
         onTransitionEnd={handleTransitionEnd}
         sx={{
