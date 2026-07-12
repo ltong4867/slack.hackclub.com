@@ -68,6 +68,11 @@ const PrimaryButton = ({ children, onClick }) => (
         boxShadow: '0 0 0 2px white',
         backgroundImage:
           'radial-gradient(ellipse farthest-corner at bottom right, #ff8c37, #ec3750)'
+      },
+      ':focus-visible': {
+        outline: '2px solid white',
+        outlineOffset: '2px',
+        borderRadius: 'extra'
       }
     }}
   >
@@ -96,6 +101,11 @@ const SecondaryButton = ({ children, onClick }) => (
         bg: 'white',
         color: 'red',
         transform: 'scale(1.05)'
+      },
+      ':focus-visible': {
+        outline: '2px solid white',
+        outlineOffset: '2px',
+        borderRadius: 'extra'
       }
     }}
   >
@@ -325,7 +335,12 @@ const DownSlideContent = ({ slide, onUp, conductData }) => {
             alignItems: 'center',
             gap: 2,
             transition: 'background 0.2s',
-            ':hover': { bg: 'rgba(255,255,255,0.3)' }
+            ':hover': { bg: 'rgba(255,255,255,0.3)' },
+            ':focus-visible': {
+              outline: '2px solid white',
+              outlineOffset: '2px',
+              borderRadius: 'extra'
+            }
           }}
         >
           ↑ Back
@@ -542,6 +557,7 @@ const Slides = ({ isOpen, onClose }) => {
       <Box
         as="button"
         onClick={handleBack}
+        aria-label="Go back"
         sx={{
           position: 'absolute',
           top: 4,
@@ -559,7 +575,12 @@ const Slides = ({ isOpen, onClose }) => {
           alignItems: 'center',
           justifyContent: 'center',
           transition: 'background 0.2s',
-          ':hover': { bg: 'rgba(255,255,255,0.3)' }
+          ':hover': { bg: 'rgba(255,255,255,0.3)' },
+          ':focus-visible': {
+            outline: '2px solid white',
+            outlineOffset: '2px',
+            borderRadius: '50%'
+          }
         }}
       >
         ←
