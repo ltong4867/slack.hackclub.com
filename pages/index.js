@@ -52,6 +52,7 @@ const GuideItem = ({ title, children, isOpen, onToggle }) => {
   }
 
   const handleTransitionEnd = useCallback(() => {}, [])
+  const safeId = title.toLowerCase().replace(/[^a-z0-9]+/g, '-')
 
   return (
     <Box
@@ -64,6 +65,9 @@ const GuideItem = ({ title, children, isOpen, onToggle }) => {
     >
       <Box
         as="button"
+        id={`header-${safeId}`}
+        aria-expanded={isOpen}
+        aria-controls={`content-${safeId}`}
         onClick={handleClick}
         sx={{
           width: '100%',
@@ -86,7 +90,12 @@ const GuideItem = ({ title, children, isOpen, onToggle }) => {
             color: 'primary',
             bg: 'rgba(236, 55, 80, 0.05)'
           },
-          '&:hover .guide-icon': { color: 'primary' }
+          '&:hover .guide-icon': { color: 'primary' },
+          '&:focus-visible': {
+            outline: '2px solid',
+            outlineColor: 'primary',
+            outlineOffset: '2px'
+          }
         }}
       >
         {title}
@@ -114,6 +123,9 @@ const GuideItem = ({ title, children, isOpen, onToggle }) => {
         }}
       >
         <Box
+          id={`content-${safeId}`}
+          role="region"
+          aria-labelledby={`header-${safeId}`}
           sx={{
             fontSize: '1.15rem',
             pb: isOpen ? '1.5rem' : 0,
