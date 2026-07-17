@@ -65,6 +65,7 @@ const GuideItem = ({ title, children, isOpen, onToggle }) => {
       <Box
         as="button"
         onClick={handleClick}
+        aria-expanded={isOpen}
         sx={{
           width: '100%',
           py: '1.25rem',
@@ -82,6 +83,10 @@ const GuideItem = ({ title, children, isOpen, onToggle }) => {
           textAlign: 'left',
           borderRadius: '8px',
           transition: 'all 0.2s ease',
+          '&:focus-visible': {
+            outline: '2px solid currentColor',
+            outlineOffset: '2px'
+          },
           '&:hover': {
             color: 'primary',
             bg: 'rgba(236, 55, 80, 0.05)'
