@@ -46,6 +46,7 @@ const ChannelName = ({ children, href }) => (
 
 const GuideItem = ({ title, children, isOpen, onToggle }) => {
   const contentRef = useRef(null)
+  const contentId = `guide-content-${title.replace(/\s+/g, '-').toLowerCase()}`
 
   const handleClick = () => {
     onToggle()
@@ -65,6 +66,8 @@ const GuideItem = ({ title, children, isOpen, onToggle }) => {
       <Box
         as="button"
         onClick={handleClick}
+        aria-expanded={isOpen}
+        aria-controls={contentId}
         sx={{
           width: '100%',
           py: '1.25rem',
@@ -86,6 +89,11 @@ const GuideItem = ({ title, children, isOpen, onToggle }) => {
             color: 'primary',
             bg: 'rgba(236, 55, 80, 0.05)'
           },
+          '&:focus-visible': {
+            outline: '2px solid',
+            outlineColor: 'primary',
+            outlineOffset: '2px'
+          },
           '&:hover .guide-icon': { color: 'primary' }
         }}
       >
@@ -104,6 +112,7 @@ const GuideItem = ({ title, children, isOpen, onToggle }) => {
         </Text>
       </Box>
       <Box
+        id={contentId}
         ref={contentRef}
         onTransitionEnd={handleTransitionEnd}
         sx={{
@@ -769,6 +778,7 @@ const SlackPage = () => {
                 as="button"
                 onClick={handleGeolocate}
                 disabled={geoLoading}
+                aria-busy={geoLoading}
                 sx={{
                   bg: 'red',
                   backgroundImage:
@@ -788,6 +798,11 @@ const SlackPage = () => {
                   cursor: geoLoading ? 'default' : 'pointer',
                   fontFamily: 'inherit',
                   opacity: geoLoading ? 0.7 : 1,
+                  '&:focus-visible': {
+                    outline: '2px solid',
+                    outlineColor: 'primary',
+                    outlineOffset: '2px'
+                  },
                   ':hover:not(:disabled)': {
                     transform: 'scale(1.05)',
                     boxShadow: '0 0 0 2px white',
