@@ -2,7 +2,7 @@
 import Meta from '@hackclub/meta'
 import Head from 'next/head'
 import { Box, Heading, Text, Link as ThemeLink } from 'theme-ui'
-import { useState, useRef, useCallback } from 'react'
+import { useState, useRef, useCallback, useId } from 'react'
 import usePrefersMotion from '../lib/use-prefers-motion'
 import channels from '../channels.json'
 
@@ -46,6 +46,7 @@ const ChannelName = ({ children, href }) => (
 
 const GuideItem = ({ title, children, isOpen, onToggle }) => {
   const contentRef = useRef(null)
+  const contentId = useId()
 
   const handleClick = () => {
     onToggle()
@@ -65,6 +66,8 @@ const GuideItem = ({ title, children, isOpen, onToggle }) => {
       <Box
         as="button"
         onClick={handleClick}
+        aria-expanded={isOpen}
+        aria-controls={contentId}
         sx={{
           width: '100%',
           py: '1.25rem',
@@ -86,7 +89,11 @@ const GuideItem = ({ title, children, isOpen, onToggle }) => {
             color: 'primary',
             bg: 'rgba(236, 55, 80, 0.05)'
           },
-          '&:hover .guide-icon': { color: 'primary' }
+          '&:hover .guide-icon': { color: 'primary' },
+          '&:focus-visible': {
+            outline: '2px solid currentColor',
+            outlineOffset: '2px',
+          }
         }}
       >
         {title}
@@ -104,6 +111,7 @@ const GuideItem = ({ title, children, isOpen, onToggle }) => {
         </Text>
       </Box>
       <Box
+        id={contentId}
         ref={contentRef}
         onTransitionEnd={handleTransitionEnd}
         sx={{
@@ -793,6 +801,10 @@ const SlackPage = () => {
                     boxShadow: '0 0 0 2px white',
                     backgroundImage:
                       'radial-gradient(ellipse farthest-corner at bottom right, #ff8c37, #ec3750)'
+                  },
+                  '&:focus-visible': {
+                    outline: '2px solid currentColor',
+                    outlineOffset: '2px',
                   }
                 }}
               >
