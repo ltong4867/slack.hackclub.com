@@ -310,6 +310,7 @@ const DownSlideContent = ({ slide, onUp, conductData }) => {
       >
         <Box
           as="button"
+          aria-label="Go back"
           onClick={onUp}
           sx={{
             bg: 'rgba(255,255,255,0.2)',
@@ -525,6 +526,9 @@ const Slides = ({ isOpen, onClose }) => {
         '@keyframes slideFromTop': {
           from: { opacity: 0, transform: 'translateY(-100%)' },
           to: { opacity: 1, transform: 'translateY(0)' }
+        },
+        '@media (prefers-reduced-motion: reduce)': {
+          animation: 'none'
         }
       }}
     >
@@ -541,6 +545,7 @@ const Slides = ({ isOpen, onClose }) => {
 
       <Box
         as="button"
+        aria-label="Go back"
         onClick={handleBack}
         sx={{
           position: 'absolute',
@@ -601,7 +606,10 @@ const Slides = ({ isOpen, onClose }) => {
           alignItems: 'center',
           justifyContent: 'center',
           zIndex: 1,
-          animation: `${getAnimationName()} 0.4s ease-out forwards`
+          animation: `${getAnimationName()} 0.4s ease-out forwards`,
+          '@media (prefers-reduced-motion: reduce)': {
+            animation: 'none'
+          }
         }}
       >
         {isDownSlide && downSlide ? (

@@ -1,4 +1,3 @@
-## 2026-06-10 - [Accessible Mobile Menu Toggles]
-
-**Learning:** Found a custom mobile menu toggle that was implemented as an interactive div without button semantics or aria-labels. It relied purely on click events.
-**Action:** Refactored to use semantic `as="button"`, added dynamic `aria-label` based on toggle state, `aria-expanded`, and visible focus rings for keyboard navigation.
+## 2024-05-24 - Interactive Slide Accessibility
+**Learning:** `theme-ui` icon buttons lack intrinsic accessible names and their CSS transitions completely bypass React-level prefers-reduced-motion hooks unless explicitly guarded by `@media (prefers-reduced-motion: reduce)`.
+**Action:** When implementing custom interactive sliders or modals with `theme-ui`, enforce `aria-label` on all icon-only controls and embed native CSS reduced-motion media queries directly within the `sx` props for continuous animations, even if framer-motion is used elsewhere.
