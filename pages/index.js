@@ -86,7 +86,12 @@ const GuideItem = ({ title, children, isOpen, onToggle }) => {
             color: 'primary',
             bg: 'rgba(236, 55, 80, 0.05)'
           },
-          '&:hover .guide-icon': { color: 'primary' }
+          '&:hover .guide-icon': { color: 'primary' },
+          ':focus-visible': {
+            outline: '2px solid currentColor',
+            outlineOffset: '2px',
+            borderRadius: '4px'
+          }
         }}
       >
         {title}
@@ -453,7 +458,7 @@ const SlackPage = () => {
             radial-gradient(circle at 85% 30%, rgba(236, 55, 80, 0.1), transparent 50%),
             radial-gradient(circle at 50% 80%, rgba(18, 100, 163, 0.05), transparent 50%)
           `,
-          zIndex: -2,
+          zIndex: -2
         },
         '&::after': {
           content: '""',
@@ -793,6 +798,11 @@ const SlackPage = () => {
                     boxShadow: '0 0 0 2px white',
                     backgroundImage:
                       'radial-gradient(ellipse farthest-corner at bottom right, #ff8c37, #ec3750)'
+                  },
+                  ':focus-visible': {
+                    outline: '2px solid currentColor',
+                    outlineOffset: '2px',
+                    borderRadius: '4px'
                   }
                 }}
               >
