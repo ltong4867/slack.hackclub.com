@@ -30,8 +30,13 @@ const slideData = [
   {
     id: 'slack',
     title: 'We use Slack',
-    description:
-      <p>Slack is our online platform. If you don&#39;t know how to use it, we have written guides and <strong>living humans</strong> who will help you.</p>,
+    description: (
+      <p>
+        Slack is our online platform. If you don&#39;t know how to use it, we
+        have written guides and <strong>living humans</strong> who will help
+        you.
+      </p>
+    ),
     primaryButton: { label: 'Join Hack Club', action: 'auth' },
     secondaryButton: { label: 'Help with Slack', action: 'down' },
     downSlide: {
@@ -325,7 +330,11 @@ const DownSlideContent = ({ slide, onUp, conductData }) => {
             alignItems: 'center',
             gap: 2,
             transition: 'background 0.2s',
-            ':hover': { bg: 'rgba(255,255,255,0.3)' }
+            ':hover': { bg: 'rgba(255,255,255,0.3)' },
+            ':focus-visible': {
+              outline: '2px solid currentColor',
+              outlineOffset: '2px'
+            }
           }}
         >
           ↑ Back
@@ -542,6 +551,7 @@ const Slides = ({ isOpen, onClose }) => {
       <Box
         as="button"
         onClick={handleBack}
+        aria-label="Go back"
         sx={{
           position: 'absolute',
           top: 4,
@@ -559,7 +569,11 @@ const Slides = ({ isOpen, onClose }) => {
           alignItems: 'center',
           justifyContent: 'center',
           transition: 'background 0.2s',
-          ':hover': { bg: 'rgba(255,255,255,0.3)' }
+          ':hover': { bg: 'rgba(255,255,255,0.3)' },
+          ':focus-visible': {
+            outline: '2px solid currentColor',
+            outlineOffset: '2px'
+          }
         }}
       >
         ←
